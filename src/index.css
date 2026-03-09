@@ -1,0 +1,61 @@
+
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Nunito', sans-serif;
+    color: #1a3d5c;
+    overflow-x: hidden;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+@theme {
+  --color-navy:        #1a3d5c;
+  --color-blue:        #2b7fb8;
+  --color-blue-dark:   #1d6a9e;
+  --color-sky-soft:    #e8f4fb;
+  --color-sky-light:   #d0eaf8;
+  --color-mint:        #3aad7e;
+  --color-mint-soft:   #e4f5ef;
+  --color-peach:       #e07b3a;
+  --color-peach-soft:  #fdf0e8;
+  --color-muted:       #6b8ea8;
+  --color-border:      #ddeaf5;
+  --color-bg:          #f4f8fc;
+
+  --font-sans: "Nunito", sans-serif;
+
+  --radius-xl2: 1.5rem;
+  --radius-xl3: 2rem;
+
+  --shadow-card:       0 8px 32px rgba(26,61,92,0.08);
+  --shadow-card-hover: 0 20px 50px rgba(26,61,92,0.12);
+  --shadow-blue:       0 4px 16px rgba(43,127,184,0.3);
+  --shadow-blue-hover: 0 8px 24px rgba(43,127,184,0.4);
+  --shadow-coral:      0 4px 14px rgba(224,123,58,0.3);
+}
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-blue text-white font-extrabold text-sm px-7 py-3 rounded-full transition-all duration-200 shadow-blue hover:bg-blue-dark hover:-translate-y-0.5 hover:shadow-blue-hover;
+  }
+  .btn-coral {
+    @apply inline-flex items-center gap-2 bg-peach text-white font-extrabold text-sm px-7 py-3 rounded-full transition-all duration-200 shadow-coral hover:brightness-90 hover:-translate-y-0.5;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border-2 border-blue text-blue font-extrabold text-sm px-6 py-2.5 rounded-full transition-all duration-200 hover:bg-blue hover:text-white;
+  }
+
+  /* Section label pill */
+  .section-label {
+    @apply inline-block text-xs font-bold tracking-widest uppercase text-blue bg-sky-soft px-4 py-1.5 rounded-full mb-3;
+  }
+ .service-tag {
+    @apply text-xs font-bold px-4 py-1.5 rounded-full bg-white text-blue border border-border transition-all duration-200 cursor-default hover:bg-blue hover:text-white hover:border-blue hover:-translate-y-0.5;
+  }
