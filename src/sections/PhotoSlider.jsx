@@ -1,49 +1,59 @@
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, useRef } from "react";
+import foto1 from "../assets/img/1.webp";
+import foto2 from "../assets/img/2.webp";
+import foto3 from "../assets/img/26.webp";
+import foto4 from "../assets/img/5.webp";
+import foto5 from "../assets/img/35.webp";
+import foto6 from "../assets/img/45.webp";
+import foto7 from "../assets/img/39.webp";
+import foto8 from "../assets/img/40.webp";
+import foto9 from "../assets/img/52.webp";
+import foto10 from "../assets/img/42.webp";
+import foto11 from "../assets/img/50.webp";
 
 const photos = [
   {
-    url: "/src/assets/img/2.jpg",
-    caption: "Talleres de Arte",
+    url: foto1,
+    caption: "HUERTOS FAMILIARES",
   },
     {
-    url: "/src/assets/img/3.jpg",
-    caption: "Comedor Infantil",
+    url: foto2,
+    caption: "HUERTO ESCOLAR",
   },
     {
-    url: "/src/assets/img/26.jpg",
-    caption: "Deporte Social",
+    url: foto3,
+    caption: "HUERTO",
   },
   {
-    url: "/src/assets/img/1.jpg",
-    caption: "Apoyo Escolar",
+    url: foto11,
+    caption: "NUTRICIÓN",
   },
 
   {
-    url: "/src/assets/img/5.jpg",
-    caption: "Voluntariado",
+    url: foto4,
+    caption: "HUERTO",
   },  {
-    url: "/src/assets/img/35.jpeg",
-    caption: "Voluntariado",
+    url: foto5,
+    caption: "EDUCACIÓN",
   },
     {
-    url: "/src/assets/img/45.jpeg",
-    caption: "Voluntariado",
+    url: foto6,
+    caption: "PROTECCIÓN",
   },
     {
-    url: "/src/assets/img/39.jpeg",
-    caption: "Voluntariado",
+    url: foto7,
+    caption: "INSTRUCCIÓN",
   },
     {
-    url: "/src/assets/img/40.jpeg",
-    caption: "Voluntariado",
+    url: foto8,
+    caption: "CULTURA",
   },
      {
-    url: "/src/assets/img/52.jpeg",
-    caption: "Voluntariado",
+    url: foto9,
+    caption: "PSICOLOGÍA",
   },   {
-    url: "/src/assets/img/42.jpeg",
-    caption: "Voluntariado",
+    url: foto10,
+    caption: "FORMACIÓN",
   },
   
 ];
@@ -59,21 +69,31 @@ export default function PhotoSlider() {
     setTimeout(() => setAnimating(false), 500);
   };
 
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   const prev = () => goTo((current - 1 + photos.length) % photos.length);
   const next = () => goTo((current + 1) % photos.length);
 
-  // Auto-advance
+  // Auto-advance only if visible
   useEffect(() => {
+    if (!isVisible) return;
     const timer = setInterval(next, 4000);
     return () => clearInterval(timer);
-  }, [current]);
-
-
-  
+  }, [current, isVisible]);
 
 
   return (
-    <section className="bg-gray-50 py-16 px-6">
+    <section id="galeria" ref={sectionRef} className="bg-gray-100 py-16 px-6">
       <div className="max-w-5xl mx-auto">
 
         {/* Header */}
@@ -106,7 +126,8 @@ export default function PhotoSlider() {
           {/* Prev button */}
           <button
             onClick={prev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full w-10 h-10 flex items-center justify-center shadow transition-all duration-200"
+            aria-label="Foto anterior"
+            className="absolute cursor-pointer left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full w-10 h-10 flex items-center justify-center shadow transition-all duration-200"
           >
             ‹
           </button>
@@ -114,7 +135,8 @@ export default function PhotoSlider() {
           {/* Next button */}
           <button
             onClick={next}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full w-10 h-10 flex items-center justify-center shadow transition-all duration-200"
+            aria-label="Siguiente foto"
+            className="absolute cursor-pointer right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full w-10 h-10 flex items-center justify-center shadow transition-all duration-200"
           >
             ›
           </button>
@@ -131,10 +153,14 @@ export default function PhotoSlider() {
                   ? "border-red-500 scale-105 shadow-md"
                   : "border-transparent opacity-60 hover:opacity-90"
               }`}
+              style={{ aspectRatio: "20 / 16" }}
             >
               <img
                 src={p.url}
                 alt={p.caption}
+                loading="lazy"
+                width="80"
+                height="64"
                 className="w-full h-full object-cover"
               />
             </button>

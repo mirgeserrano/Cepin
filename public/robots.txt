@@ -1,0 +1,6 @@
+User-agent: *
+
+Disallow:
+
+
+Sitemap: https://fundacioncepin.com/sitemap.xml

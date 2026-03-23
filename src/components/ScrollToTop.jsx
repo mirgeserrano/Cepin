@@ -18,7 +18,8 @@ export default function ScrollToTop() {
   return (
     <button
       onClick={scrollUp}
-      className={`fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-[#0ea5e9] text-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-[#0284c7] hover:scale-110 ${
+      aria-label="Volver arriba"
+      className={`cursor-pointer fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#4984CC] text-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-[#0284c7] hover:scale-110 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
       }`}
     >

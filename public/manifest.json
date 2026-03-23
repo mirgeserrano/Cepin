@@ -1,0 +1,23 @@
+{
+  "name": "Fundación CEPIN",
+  "short_name": "CEPIN",
+  "description": "Desarrollo integral de la niñez en el estado Zulia, Venezuela.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a3d5c",
+  "icons": [
+    {
+      "src": "/logo.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ],
+  "orientation": "portrait"
+}

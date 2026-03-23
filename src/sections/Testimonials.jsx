@@ -1,6 +1,6 @@
 export default function Testimonials() {
   return (
-    <section id="contacto" className="bg-gray-100 py-16 px-6">
+    <section id="contacto" className="bg-gray-50 py-16 px-6 scroll-mt-24">
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
 
         {/* Card Donante - Azul */}
@@ -13,7 +13,9 @@ export default function Testimonials() {
               Tu donación se traduce directamente en materiales educativos, platos de comida y un futuro digno para cientos de niños.
             </p>
           </div>
-          <a href="https://wa.me/584127695061?text=Hola,+quiero+ser+Donate+de+la+fundación+CEPIN+🩷"className="self-start flex items-center gap-2 bg-white text-blue-600 font-semibold text-sm px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors duration-200">
+          <a href="https://wa.me/584123938935?text=Hola,+quiero+ser+Donate+de+la+fundación+CEPIN+🩷" 
+             aria-label="Contactar por WhatsApp para ser donante"
+             className="self-start flex items-center gap-2 bg-white text-blue-600 font-semibold text-sm px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors duration-200">
             <span>❤️</span> Ser Donante
           </a>
         </div>
@@ -28,7 +30,9 @@ export default function Testimonials() {
               Únete a nuestro equipo de voluntarios y vive la experiencia de transformar realidades con tus propias manos y corazón.
             </p>
           </div>
-          <a href="https://wa.me/584127695061?text=Hola,+quiero+ser+Voluntario+de+la+fundación+CEPIN+🤝" className="self-start flex items-center gap-2 bg-white text-green-600 font-semibold text-sm px-6 py-3 rounded-xl hover:bg-green-50 transition-colors duration-200">
+          <a href="https://wa.me/584123938935?text=Hola,+quiero+ser+Voluntario+de+la+fundación+CEPIN+🤝" 
+             aria-label="Contactar por WhatsApp para ser voluntario"
+             className="self-start flex items-center gap-2 bg-white text-green-600 font-semibold text-sm px-6 py-3 rounded-xl hover:bg-green-50 transition-colors duration-200">
             <span>🤝</span> Ser Voluntario
           </a>
         </div>

@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
-import hero1 from "../assets/img/13.jpg";
-import hero2 from "../assets/img/7.jpg";
-import hero3 from "../assets/img/9.jpg";
+import hero1 from "../assets/img/13.webp";
+import hero2 from "../assets/img/7.webp";
+import hero3 from "../assets/img/9.webp";
+import ContactButton from "../components/ContactButton ";
+import { projects } from "../components/Project";
+
 
 const images = [hero1, hero2, hero3];
 
@@ -22,14 +25,20 @@ export default function Hero() {
   }, [current]);
 
   return (
-    <section id="inicio" className="relative overflow-hidden min-h-[90vh] flex items-center bg-gray-900">
+    <section id="inicio"  className="relative overflow-hidden min-h-[90vh] flex items-center bg-gray-900 scroll-mt-24">
 
       {/* Imágenes slideshow */}
       {images.map((img, i) => (
         <img
           key={i}
           src={img}
-          alt={`Hero ${i + 1}`}
+          alt={
+            i === 0 ? "Apoyo educativo a la niñez en Zulia" :
+            i === 1 ? "Programas de nutrición infantil Fundación CEPIN" :
+            "Desarrollo integral comunitario en Venezuela"
+          }
+          loading={i === 0 ? "eager" : "lazy"}
+          {...(i === 0 ? { fetchPriority: "high" } : {})}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
             i === current ? "opacity-100" : "opacity-0"
           }`}
@@ -71,20 +80,22 @@ export default function Hero() {
           {/* Descripción */}
           <p className="text-white/85 text-base md:text-lg leading-relaxed mb-8 max-w-md">
             Trabajamos cada día para brindar  a los niños y niñas de nuestra comunidad, ofreciendo
-            <span className="text-[#7AC143] font-bold"> oportunidades, educación</span>,{" "}
+            <span className="text-[#7AC143] font-bold"> oportunidades, educación</span>
             <span className="text-orange-300 font-bold">y un desarrollo integral</span> a los pequenos en situación de vulnerabilidad.
           </p>
 
           {/* Botones */}
           <div className="flex flex-wrap gap-4 mb-8">
             <a
-              href="https://wa.me/584127695061?text=Hola,+quiero+ser+Donante+de+la+fundación+CEPIN+🩷"
-              className="inline-flex items-center gap-2 rounded-full bg-[#F97316] px-6 py-3 text-sm font-extrabold text-white shadow-lg shadow-orange-500/40 hover:bg-orange-500 hover:scale-105 transition-all duration-200"
+              href="https://wa.me/584123938935?text=Hola,+quiero+ser+Donante+de+la+fundación+CEPIN+🩷"
+              aria-label="Información para ser donante por WhatsApp"
+              className="inline-flex items-center gap-2 rounded-full bg-[#7AC143] px-6 py-3 text-sm font-extrabold text-white shadow-lg shadow-green-500/40 hover:bg-[#7AC143] hover:scale-105 transition-all duration-200"
             >
               ❤️ Quiero Ser Donante
             </a>
             <a
-              href="https://wa.me/584127695061?text=Hola,+quiero+ser+Voluntario+de+la+fundación+CEPIN+🤝"
+              href="https://wa.me/584123938935?text=Hola,+quiero+ser+Voluntario+de+la+fundación+CEPIN+🤝"
+              aria-label="Información para ser voluntario por WhatsApp"
               className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/40 px-6 py-3 text-sm font-extrabold text-white hover:bg-white/25 hover:scale-105 transition-all duration-200"
             >
               🤝 Quiero Ser Voluntario
@@ -95,8 +106,8 @@ export default function Hero() {
           <div className="flex flex-wrap gap-3">
             {[
               { num: "+500", label: "Familias apoyadas" },
-              { num: "5", label: "Proyectos activos" },
-              { num: "10+", label: "Años de labor" },
+              { num: `${projects.length}`, label: "Proyectos activos" },
+              { num: `+${new Date().getFullYear() - 1995}`, label: "Años de labor" },
             ].map((s) => (
               <div
                 key={s.label}
@@ -110,19 +121,6 @@ export default function Hero() {
 
         </div>
       </div>
-
-      {/* Dots */}
-      {/* <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-        {images.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            className={`rounded-full transition-all duration-300 h-1.5 ${
-              i === current ? "bg-[#7AC143] w-6" : "bg-white/40 w-2"
-            }`}
-          />
-        ))}
-      </div> */}
 
     </section>
   );

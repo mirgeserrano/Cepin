@@ -5,6 +5,7 @@ const cards = [
     text: "Servir a los niños del sector mediante una formación integral y una alimentación balanceada que los ayuden a crecer sanamente.",
     accent: "bg-red-600",
     iconBg: "bg-red-50",
+    border: "border-red-500",
   },
   {
     icon: "🔭",
@@ -12,19 +13,21 @@ const cards = [
     text: "Formar a partir de su cultura el niño de esta comunidad, desarrollando sus talentos a través de la educación integral, recreación y nutrición para que sea un adulto productivo.",
     accent: "bg-teal-500",
     iconBg: "bg-teal-50",
+    border: "border-teal-500",
   },
   {
     icon: "⭐",
     title: "Valores",
     text: "Los valores que caracterizan y definen la cultura y marco de actuación de la institución son los siguientes: Respeto, Compromiso, Excelencia, Solidaridad y Responsabilidad.",
-    accent: "bg-red-600",
-    iconBg: "bg-red-50",
+    accent: "bg-yellow-500",
+    iconBg: "bg-yellow-50", 
+    border: "border-yellow-500",
   },
 ];
 
 export default function About() {
   return (
-    <section id="quiénes-somos" className="bg-gray-50 py-16 px-6 scroll-smooth">
+    <section id="quiénes-somos" className="bg-gray-100 py-16 px-6 scroll-smooth">
       <div className="max-w-5xl mx-auto">
         <p className="text-center text-xs font-bold uppercase tracking-widest text-red-500 mb-2">
           Quiénes somos
@@ -32,7 +35,7 @@ export default function About() {
         <h2 className="text-center text-3xl font-bold text-gray-800 mb-12">
           Nuestra identidad
         </h2>
-        <p className="text-sm text-muted leading-relaxed mb-16">
+        <p className="text-sm text-muted text-align: justify leading-relaxed mb-16">
           El Centro de Promoción Integral del Niño (CEPIN) es una institución
           fundada en 1995 dedicada a la atención y desarrollo integral de la
           infancia, especialmente de niños y niñas de la etnia wayuu en el
@@ -52,12 +55,12 @@ export default function About() {
           {cards.map((card) => (
             <div
               key={card.title}
-              className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden"
+              className={`bg-white border border-gray-200 border-t-4 ${card.border} rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden`}
             >
               {/* Top accent bar */}
-              <div className={`h-1 w-full ${card.accent}`} />
+              {/* <div className={`h-1 w-full ${card.accent}  border border-gray-200 border-t-4 border-orange-500 `} /> */}
 
-              <div className="p-8">
+              <div className="p-8 ">
                 {/* Icon */}
                 <div
                   className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5 ${card.iconBg}`}
